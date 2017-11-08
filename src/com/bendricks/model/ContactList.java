@@ -20,6 +20,5 @@ public class ContactList {
   public int getPersonCount () {
    return mContactList.size();
   }
-  
-  
+ 
 }
