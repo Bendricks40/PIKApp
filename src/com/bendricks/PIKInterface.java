@@ -20,7 +20,7 @@ public class PIKInterface {
         mMenu = new HashMap<String, String>();
         mMenu.put("add", "Add a new person to the contact list");
         mMenu.put("view", "View your contact List");
-        mMenu.put("quit", "Give up.  Exit the program");
+        mMenu.put("quit", "Saves your contact list and exits the program");
     }
 
     private String promptAction() throws IOException {
@@ -44,6 +44,8 @@ public class PIKInterface {
                 switch (choice) {
                     case "add":
                        System.out.printf("%nYou chose ADD. Good work %n%n");
+                       Person person = promptNewPerson();
+                       mContactList.addPerson(person);
                         break;
                     case "view":
                         System.out.printf("%nYou chose VIEW. Good work %n%n");
@@ -61,5 +63,19 @@ public class PIKInterface {
             }
         } while (!choice.equals("quit"));
     }
+
+    private Person promptNewPerson() throws IOException {
+        System.out.print("Enter first name:  ");
+        String firstname = mReader.readLine();
+        System.out.print("Enter last name:  ");
+        String lastname = mReader.readLine();
+        System.out.print("Enter the TIME you met this person:  ");
+        String time = mReader.readLine();
+        System.out.print("Enter the location you met this person:  ");
+        String location = mReader.readLine();
+        return new Person(firstname, lastname, location, time);
+    }
+
+
 
 }
