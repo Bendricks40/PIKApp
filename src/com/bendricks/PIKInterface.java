@@ -43,12 +43,13 @@ public class PIKInterface {
                 choice = promptAction();
                 switch (choice) {
                     case "add":
-                       System.out.printf("%nYou chose ADD. Good work %n%n");
+                       System.out.printf("%nYou chose ADD. Enter info below: %n%n");
                        Person person = promptNewPerson();
                        mContactList.addPerson(person);
                         break;
                     case "view":
-                        System.out.printf("%nYou chose VIEW. Good work %n%n");
+                        System.out.printf("%nYou chose VIEW. Here are all your contacts and when/where you met them: %n%n");
+                        mContactList.publicByContacts();
                         break;
                     case "quit":
                         System.out.printf("%nThanks for using PIK!!%n%n");
@@ -74,6 +75,14 @@ public class PIKInterface {
         System.out.print("Enter the location you met this person:  ");
         String location = mReader.readLine();
         return new Person(firstname, lastname, location, time);
+    }
+
+    private void showAvailableContacts() throws IOException {
+        System.out.println("Available contacts:");
+        List<String> allPersons = new ArrayList<>(mContactList.publicByContacts());
+        for (String name : allPersons) {
+            System.out.printf("This is a test...");
+        }
     }
 
 
