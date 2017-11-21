@@ -74,7 +74,7 @@ public class PIKInterface {
         String time = mReader.readLine();
         System.out.print("Enter the location you met this person:  ");
         String location = mReader.readLine();
-        return new Person(firstname, lastname, location, time);
+        return new Person(firstname, lastname, time, location);
     }
 
     private void showAvailableContacts() throws IOException {
