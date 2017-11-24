@@ -1,44 +1,45 @@
 package com.bendricks.model;
+
 import java.io.*;
-import java.util.*;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.List;
 
 
 public class ContactList {
-  
- private List<Person> mContactList;
-  
-  public ContactList() {
-   mContactList = new ArrayList<Person>(); 
-  }
 
-  public void addPerson(Person person) {
-      mContactList.add(person);
-  }
-  
-  public int getPersonCount () {
-   return mContactList.size();
-  }
+    private List<Person> mContactList;
 
- private ArrayList<String> byContacts() {
-  ArrayList<String> allContacts = new ArrayList<String>();
+    public ContactList() {
+        mContactList = new ArrayList<Person>();
+    }
 
-      for (Person person : mContactList) {
-String nextPerson = person.getFirstName() + " " + person.getLastName() + "  Location met:  " + person.getLocationMet() + "  Date met:  " + person.getTimeMet();
-System.out.printf("%s %n",nextPerson);
-allContacts.add(nextPerson);
-  }
-     System.out.printf("%n");
-return allContacts;
+    public void addPerson(Person person) {
+        mContactList.add(person);
+    }
 
-  }
+    public int getPersonCount() {
+        return mContactList.size();
+    }
 
- public ArrayList<String> publicByContacts() {
-   return byContacts();
- }
+    //this should be an ArrayList of Persons which is passed bac to PIKInterface. Then in the PIKInterface, do the output code to display the persons.
+    private ArrayList<String> byContacts() {
+        ArrayList<String> allContacts = new ArrayList<String>();
+        Integer Counter = 0;
+
+        for (Person person : mContactList) {
+            String nextPerson = (Counter + 1) + "). " + person.getFirstName() + " " + person.getLastName() + "  Location met:  " + person.getLocationMet() + "  Date met:  " + person.getTimeMet();
+            Counter++;
+            System.out.printf("%s %n", nextPerson);
+            allContacts.add(nextPerson);
+        }
+        System.out.printf("%n");
+        return allContacts;
+
+    }
+
+    public ArrayList<String> publicByContacts() {
+        return byContacts();
+    }
 
 
     public void exportTo(String fileName) {
@@ -75,7 +76,6 @@ return allContacts;
             ioe.printStackTrace();
         }
     }
-
 
 
 }
